@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An end-to-end NSW electricity demand forecasting project using AEMO demand and ERA5 weather data.">
+  <title>NSW Electricity Demand Forecasting</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="#top">NSW Demand Lab</a>
+      <div class="nav-links">
+        <a href="#patterns">Patterns</a>
+        <a href="#forecast">Forecast</a>
+        <a href="#method">Method</a>
+        <a href="https://github.com/ads0094/NSW-Electricity-demand-forecasting">GitHub</a>
+      </div>
+    </nav>
+    <div class="hero-content" id="top">
+      <p class="eyebrow">2019–2025 · New South Wales</p>
+      <h1>Forecasting electricity demand, half an hour at a time.</h1>
+      <p class="lead">An end-to-end project combining AEMO scheduled demand, weather, calendar effects and machine learning to understand—and predict—how NSW uses electricity.</p>
+      <a class="primary-link" href="#dashboard">Explore the data <span aria-hidden="true">↓</span></a>
+    </div>
+  </header>
+
+  <main>
+    <section class="section dashboard" id="dashboard">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Project at a glance</p>
+          <h2>Seven years of demand</h2>
+        </div>
+        <p>Every half-hour interval passed completeness and quality checks before analysis.</p>
+      </div>
+      <div class="metric-grid" aria-label="Project summary">
+        <article><span>Half-hour records</span><strong id="records">—</strong></article>
+        <article><span>Average demand</span><strong id="average-demand">—</strong></article>
+        <article><span>Record demand</span><strong id="peak-demand">—</strong></article>
+        <article><span>Model test MAE</span><strong id="test-mae">—</strong></article>
+      </div>
+      <div class="chart-block">
+        <div class="chart-header">
+          <div>
+            <h3>Daily NSW demand</h3>
+            <p>Daily average and peak scheduled demand in megawatts.</p>
+          </div>
+          <label for="year-filter">Year
+            <select id="year-filter"><option value="all">All years</option></select>
+          </label>
+        </div>
+        <div id="daily-chart" class="chart" role="img" aria-label="Daily average and peak NSW demand line chart"></div>
+        <div class="legend"><span class="legend-average">Average</span><span class="legend-peak">Peak</span></div>
+      </div>
+    </section>
+
+    <section class="section soft" id="patterns">
+      <div class="section-heading">
+        <div><p class="eyebrow">Demand patterns</p><h2>Time and temperature shape the grid</h2></div>
+        <p>Demand follows a strong daily rhythm, with distinct seasonal and weekday effects.</p>
+      </div>
+      <div class="two-column">
+        <article class="chart-block">
+          <h3>Seasonal daily profile</h3>
+          <p>Winter has the strongest morning and evening peaks.</p>
+          <div id="season-chart" class="chart compact" role="img" aria-label="Average demand profile by season"></div>
+          <div class="legend seasonal-legend"></div>
+        </article>
+        <article class="findings">
+          <p class="eyebrow">What stood out</p>
+          <ol>
+            <li><strong>13,751 MW</strong><span>Record half-hour demand, 31 January 2019.</span></li>
+            <li><strong>572 MW</strong><span>Weekday uplift over weekends at 18:00.</span></li>
+            <li><strong>9.3% lower</strong><span>Average public-holiday demand versus other days.</span></li>
+            <li><strong>Nonlinear heat effect</strong><span>Demand rises quickly above roughly 27°C.</span></li>
+          </ol>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="forecast">
+      <div class="section-heading">
+        <div><p class="eyebrow">Forecast performance</p><h2>A useful lift over simple baselines</h2></div>
+        <p>Models were selected on 2024 and evaluated once on the separate 2025 test year.</p>
+      </div>
+      <div class="two-column forecast-grid">
+        <div id="model-chart" class="chart" role="img" aria-label="Forecast model MAE comparison"></div>
+        <article class="result-card">
+          <span>Improvement over previous-day forecast</span>
+          <strong id="model-improvement">—</strong>
+          <p>Gradient boosting reduced test MAE while tracking daily demand shape and extreme summer peaks more closely.</p>
+        </article>
+      </div>
+      <div class="callout"><strong>Important:</strong> ERA5 reanalysis acts as a proxy for future weather forecasts. Real production accuracy would also depend on weather forecast error.</div>
+    </section>
+
+    <section class="section dark" id="method">
+      <div class="section-heading">
+        <div><p class="eyebrow">How it works</p><h2>A reproducible forecasting pipeline</h2></div>
+        <p>Raw files stay local. Code, checks, reports and the compact dashboard are versioned on GitHub.</p>
+      </div>
+      <ol class="pipeline">
+        <li><span>01</span><strong>Collect</strong><p>AEMO five-minute dispatch data, ERA5 weather and official NSW holidays.</p></li>
+        <li><span>02</span><strong>Prepare</strong><p>Aggregate to half-hours, validate continuity and build calendar features.</p></li>
+        <li><span>03</span><strong>Learn</strong><p>Compare baselines, ridge regression and gradient boosting chronologically.</p></li>
+        <li><span>04</span><strong>Test</strong><p>Hold out 2025 and report MAE, RMSE, MAPE and daily peak error.</p></li>
+      </ol>
+    </section>
+  </main>
+
+  <footer>
+    <p>Built as a reproducible electricity-demand forecasting project.</p>
+    <a href="https://github.com/ads0094/NSW-Electricity-demand-forecasting">View the source on GitHub</a>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>
