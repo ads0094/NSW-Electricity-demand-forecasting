@@ -64,19 +64,5 @@ tests/          # automated tests
 - [AEMO NEMWeb market data](https://visualisations.aemo.com.au/aemo/nemweb/)
 - [BOM Climate Data Online](https://www.bom.gov.au/climate/data/)
 
-Source licensing, attribution, archive coverage, and redistribution constraints will be documented during the data-audit milestone.
+Source licensing, attribution, archive coverage, and redistribution constraints will be documented during the data-audit step.
 
-## Collaboration and commit workflow
-
-Work will be divided into small milestones. Before each Git commit, we will review:
-
-- what changed;
-- what evidence or checks support the change;
-- any decision that needs project-owner input; and
-- the proposed commit message.
-
-No raw third-party dataset, credential, or large generated artifact should be committed.
-
-## Status
-
-Milestone 1 is in progress: project definition and repository setup.
