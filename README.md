@@ -1,6 +1,6 @@
 # NSW Electricity Demand Forecasting
 
-This is an end-to-end forecasting project for half-hourly operational electricity demand in New South Wales, Australia.
+This is an end-to-end forecasting project for half-hourly scheduled electricity demand in New South Wales, Australia.
 
 ## Project objective
 
@@ -8,7 +8,7 @@ To build a reproducible forecasting project that explains historical NSW electri
 
 The project will combine:
 
-- operational demand published by the Australian Energy Market Operator (AEMO);
+- scheduled demand published by the Australian Energy Market Operator (AEMO);
 - weather observations published by the Bureau of Meteorology (BOM);
 - calendar, public-holiday, seasonal, and daylight-saving features; and
 - forecasting baselines, statistical models, and machine-learning models.
@@ -24,7 +24,7 @@ The project will combine:
 ## Initial modelling scope
 
 - **Region:** New South Wales (`NSW1` in AEMO data)
-- **Target:** half-hourly operational demand in MW
+- **Target:** half-hourly scheduled demand in MW, calculated from AEMO's five-minute dispatch data
 - **Candidate history:** 2019–2025, subject to archive availability and data-quality checks
 - **Forecast horizons:** 24 hours and 7 days
 - **Validation:** chronological rolling-origin evaluation
@@ -66,3 +66,7 @@ tests/          # automated tests
 
 Source licensing, attribution, archive coverage, and redistribution constraints will be documented during the data-audit step.
 
+The long historical series uses scheduled demand from
+`DISPATCHREGIONSUM.CLEAREDSUPPLY`. This differs from AEMO operational demand;
+the rationale and field definitions are recorded in
+[`docs/data_audit.md`](docs/data_audit.md).
