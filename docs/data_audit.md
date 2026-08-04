@@ -57,8 +57,32 @@ Downloaded AEMO archives and generated datasets are ignored by Git. The
 repository contains code, tests, metadata, and documentation needed to reproduce
 them, rather than redistributing the raw files.
 
+## Weather source decision
+
+The forecasting features use hourly ERA5 reanalysis for the coordinates of
+Bankstown Airport. The data is retrieved through Open-Meteo's Historical Weather
+API in fixed UTC+10 (`Etc/GMT-10`) so timestamps align with AEMO NEM time.
+
+This is modelled reanalysis and must not be described as direct BOM station
+observations. BOM remains the authoritative Australian observation source, but
+its free self-service products do not provide a straightforward, reproducible
+hourly 2019–2025 extract; specialised extractions may incur charges. Bankstown
+was selected as a weather proxy for the major Sydney demand centre.
+
+ERA5 was selected instead of ERA5-Land because it provides complete coverage for
+all retained variables. Those variables are temperature, relative humidity, apparent
+temperature, precipitation, 10-metre wind speed, and shortwave radiation.
+
+## Public-holiday source
+
+NSW and national public holidays for 2019–2025 are downloaded from the Australian
+Government's machine-readable public-holiday dataset on data.gov.au. State-only
+holidays outside NSW are removed.
+
 ## Sources
 
 - [AEMO NEM data dashboard](https://aemo.com.au/energy-systems/electricity/national-electricity-market-nem/data-nem/data-dashboard-nem)
 - [AEMO NEMWeb market data](https://visualisations.aemo.com.au/aemo/nemweb/)
 - [AEMO operational demand data](https://aemo.com.au/energy-systems/electricity/national-electricity-market-nem/data-nem/operational-demand-data)
+- [Open-Meteo Historical Weather API](https://open-meteo.com/en/docs/historical-weather-api)
+- [Australian public holidays dataset](https://data.gov.au/data/dataset/australian-holidays-machine-readable-dataset)

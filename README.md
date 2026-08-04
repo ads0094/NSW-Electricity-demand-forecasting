@@ -9,7 +9,7 @@ To build a reproducible forecasting project that explains historical NSW electri
 The project will combine:
 
 - scheduled demand published by the Australian Energy Market Operator (AEMO);
-- weather observations published by the Bureau of Meteorology (BOM);
+- hourly ERA5 weather reanalysis retrieved through Open-Meteo;
 - calendar, public-holiday, seasonal, and daylight-saving features; and
 - forecasting baselines, statistical models, and machine-learning models.
 
