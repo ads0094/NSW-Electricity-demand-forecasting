@@ -1,10 +1,10 @@
 # NSW Electricity Demand Forecasting
 
-An end-to-end forecasting project for half-hourly operational electricity demand in New South Wales, Australia.
+This is an end-to-end forecasting project for half-hourly operational electricity demand in New South Wales, Australia.
 
 ## Project objective
 
-Build a reproducible forecasting pipeline that explains historical NSW electricity-demand patterns and predicts demand for the next 24 hours and 7 days.
+To build a reproducible forecasting project that explains historical NSW electricity-demand patterns and predicts demand for the next 24 hours and 7 days.
 
 The project will combine:
 
@@ -17,7 +17,7 @@ The project will combine:
 
 1. How does NSW demand vary by time of day, weekday, season, and year?
 2. How strongly do temperature and extreme-weather conditions affect demand?
-3. How do public holidays and daylight saving alter the normal demand profile?
+3. How do public holidays and daylight saving change the normal demand profile?
 4. Which forecasting approach performs best on unseen future periods?
 5. When and why does the selected model make its largest errors?
 
